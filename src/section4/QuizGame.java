@@ -13,7 +13,7 @@ public class QuizGame {
 		// 3.  Use an if statement to check if their answer is correct
 		if(answer.equalsIgnoreCase("Donald Trump")) {
 			score = 1;
-			System.out.println("score 1 ");
+			System.out.println("score " + score);
 		}
 		
 		// 4.  if the user's answer is correct

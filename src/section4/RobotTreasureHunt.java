@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 
 import javax.swing.JOptionPane;
+import javax.swing.text.html.MinimalHTMLWriter;
 
 //import org.teachingextensions.logo.ImageBackground;
 //import org.teachingextensions.logo.Paintable;
@@ -16,44 +17,47 @@ import org.jointheleague.graphical.robot.Robot;
 public class RobotTreasureHunt implements KeyEventDispatcher{
 
 	// 1. Create a new mini robot (type "mini" inside the parentheses)
+	Robot mini = new Robot("mini");
+	boolean penup = true;
+	
 	
 	private void goUp() throws InterruptedException {
 		// 2. Make the robot move up the screen (use setAngle(angle) and microMove(distance))
-		
+		mini.setAngle(0);
+		mini.microMove(5);
 	}
 
 	private void goDown() throws InterruptedException{
 		// 3. make the robot move down the screen (use setAngle(angle) and microMove(distance))
-		
+		mini.setAngle(180);
+		mini.microMove(5);
 	}
 
 	private void turnLeft() throws InterruptedException{
 		// 4. Make the robot turn to the left (use setAngle(angle) and microMove(distance))
-
+		mini.setAngle(270);
+		mini.microMove(5);
 	}
 
 	private void turnRight() throws InterruptedException{
 		// 5. make the robot turn to the right (use setAngle(angle) and microMove(distance))
-		
+		mini.setAngle(90);
+		mini.microMove(5);
 	}
 
 	private void spaceBarWasPressed() {
-
 		// 5. Change ROBOTNAME below to match the name of the robot you created in step 1.  THEN, remove the slashes at the beginning of the next two lines
-		//int robotXLocation = ROBOTNAME.getX();
-		//int robotYLocation = ROBOTNAME.getY();
+		int robotXLocation = mini.getX();
+		int robotYLocation = mini.getY();
 		
 		// 6. Print the robotXLocation and robotYLocation variables to the console 
-		
+		System.out.println(robotXLocation);
+		System.out.println(robotYLocation);
 		// 7. If robot is at same location as the little girl
-		//      --make a pop-up tell the robot where to go next
-		
-		// 8. Give the user subsequent clues at different locations on the image
-		// (pirate robot, swamp, parrots, etc.)
-		
-		// 9.  If the robot is in the final location
-		//     --call the treasureFound() method
-		
+		//      --make a pop-up tell
+if(mini.getX()==720&&mini.getY()==410) {
+	JOptionPane.showMessageDialog(null, "Go to the parrot");
+}
 	}
 
 	private void go() {
@@ -93,6 +97,18 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 				}
 			else if (e.getKeyCode() == KeyEvent.VK_SPACE)
 				spaceBarWasPressed();
+			else if(e.getKeyCode()==KeyEvent.VK_SHIFT) {
+				if(penup) {
+					mini.penDown();
+					penup = false;
+					
+				}
+				else {
+					mini.penUp();
+					penup = true;
+				}
+			}
+				
 		}
 		return false;
 	}
@@ -108,6 +124,8 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 
 
 	public static void main (String[] args) throws MalformedURLException {
+		
 		new RobotTreasureHunt().go();
+		
 	}
 }
