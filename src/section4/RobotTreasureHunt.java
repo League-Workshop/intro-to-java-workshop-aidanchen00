@@ -24,31 +24,32 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 	private void goUp() throws InterruptedException {
 		// 2. Make the robot move up the screen (use setAngle(angle) and microMove(distance))
 		mini.setAngle(0);
-		mini.microMove(5);
+		mini.microMove(10);
 	}
 
 	private void goDown() throws InterruptedException{
 		// 3. make the robot move down the screen (use setAngle(angle) and microMove(distance))
 		mini.setAngle(180);
-		mini.microMove(5);
+		mini.microMove(10);
 	}
 
 	private void turnLeft() throws InterruptedException{
 		// 4. Make the robot turn to the left (use setAngle(angle) and microMove(distance))
 		mini.setAngle(270);
-		mini.microMove(5);
+		mini.microMove(10);
 	}
 
 	private void turnRight() throws InterruptedException{
 		// 5. make the robot turn to the right (use setAngle(angle) and microMove(distance))
 		mini.setAngle(90);
-		mini.microMove(5);
+		mini.microMove(10);
 	}
 
 	private void spaceBarWasPressed() {
 		// 5. Change ROBOTNAME below to match the name of the robot you created in step 1.  THEN, remove the slashes at the beginning of the next two lines
 		int robotXLocation = mini.getX();
 		int robotYLocation = mini.getY();
+		mini.hide();
 		
 		// 6. Print the robotXLocation and robotYLocation variables to the console 
 		System.out.println(robotXLocation);
@@ -62,9 +63,9 @@ if(mini.getX()==720&&mini.getY()==410) {
 
 	private void go() {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(this);
-		Robot.setWindowImage("section4/treasure_hunt.jpg");
+		//Robot.setWindowImage("section4/treasure_hunt.jpg");
 	
-		JOptionPane.showMessageDialog(null, "Ask the girl for help with your quest. Press the space bar to ask.");
+		//JOptionPane.showMessageDialog(null, "Ask the girl for help with your quest. Press the space bar to ask.");
 
 	}
 
@@ -124,7 +125,6 @@ if(mini.getX()==720&&mini.getY()==410) {
 
 
 	public static void main (String[] args) throws MalformedURLException {
-		
 		new RobotTreasureHunt().go();
 		
 	}
